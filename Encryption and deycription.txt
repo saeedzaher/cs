@@ -1,0 +1,85 @@
+# ENCRYPTION
+print("Enter Plain Text:")
+key = 10
+text = input("Plain Text: ")
+
+# Convert the text to a character array and encrypt each character
+encrypted_text = ""
+for char in text:
+    # Check if the character is a letter
+    if char.isalpha():
+        # Determine if it's uppercase or lowercase
+        offset = 97 if char.islower() else 65
+        # Convert character to its position, shift, and wrap around using modulo
+        p = (ord(char) - offset + key) % 26 + offset
+        encrypted_text += chr(p)
+    else:
+        # Keep non-alphabet characters unchanged
+        encrypted_text += char
+
+print("Encrypted Text:", encrypted_text)
+
+
+------------------------------------------------------
+
+# DECRYPTION
+print("Enter Cipher Text:")
+key = 10
+cipher_text = input("Cipher Text: ")
+
+# Convert the cipher text to a character array and decrypt each character
+decrypted_text = ""
+for char in cipher_text:
+    # Check if the character is a letter
+    if char.isalpha():
+        # Determine if it's uppercase or lowercase
+        offset = 97 if char.islower() else 65
+        # Convert character to its position, shift back, and wrap around using modulo
+        c = (ord(char) - offset - key) % 26 + offset
+        decrypted_text += chr(c)
+    else:
+        # Keep non-alphabet characters unchanged
+        decrypted_text += char
+
+print("Decrypted Text:", decrypted_text)
+
+
+
+
+---------------------------------------------------
+
+
+Caesar cipher encryption & decryption:
+
+def encrypt(plain_text, key): 
+    encrypted_text = "" 
+    for char in plain_text: 
+        if char.islower():   
+            encrypted_text += chr((ord(char) - 97 + key) % 26 + 97)  
+        elif char.isupper(): 
+            encrypted_text += chr((ord(char) - 65 + key) % 26 + 65)  
+        else: 
+            encrypted_text += char  # Keep non-alphabetic characters unchanged
+    return encrypted_text 
+ 
+def decrypt(cipher_text, key): 
+    decrypted_text = "" 
+    for char in cipher_text: 
+        if char.islower():   
+            decrypted_text += chr((ord(char) - 97 - key) % 26 + 97)  
+        elif char.isupper(): 
+            decrypted_text += chr((ord(char) - 65 - key) % 26 + 65)  
+        else: 
+            decrypted_text += char  # Keep non-alphabetic characters unchanged
+    return decrypted_text 
+ 
+plain_text = input("Enter plain text: ") 
+key = int(input("Enter key for encryption (integer): ")) 
+cipher_text = encrypt(plain_text, key) 
+print("Encrypted Text:", cipher_text) 
+ 
+cipher_text = input("\nEnter cipher text to decrypt: ") 
+key = int(input("Enter key for decryption (integer): ")) 
+decrypted_text = decrypt(cipher_text, key) 
+print("Decrypted Text:", decrypted_text)
+ 

@@ -1,0 +1,55 @@
+------------------------ 26 - Message reversal
+
+# Prompt user for input
+plaintext = input("Please Enter Plaintext: ")
+
+# Print the entered plaintext
+print(plaintext)
+
+# Print the plaintext in reverse order
+for i in range(len(plaintext) - 1, -1, -1):
+    print(plaintext[i], end="")
+
+print()  # Add a new line at the end
+
+
+
+--------------------------------------30 -Rail Fence Cipher 
+
+# Prompt user for input
+plaintext = input("Enter Your Plain text: ")
+
+# Print the input text
+print(plaintext)
+
+# Initialize empty strings for even and odd indexed characters
+even = ""
+odd = ""
+
+# Iterate through the characters in the input text
+for i in range(len(plaintext)):
+    if i % 2 == 0:  # Check if the index is even
+        even += plaintext[i]
+    else:  # Otherwise, the index is odd
+        odd += plaintext[i]
+
+# Print the even-indexed and odd-indexed characters
+print(even + " " + odd)
+
+
+
+------------------------------------- 33  Atbash Cipher
+
+enc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+dec = ['z', 'y', 'x', 'w', 'v', 'u', 't', 's', 'r', 'q', 'p', 'o', 'n', 'm', 'l', 'k', 'j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a']
+
+text = input("Enter Plain Text: ")
+arr = list(text)
+
+for char in arr:
+    if char in enc:
+        index = enc.index(char)
+        print(dec[index], end=" ")
+
+print()
+
